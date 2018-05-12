@@ -12,6 +12,7 @@
 		D31A37A520A766AD000FBF6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31A37A320A766AD000FBF6A /* Main.storyboard */; };
 		D31A37A720A766AD000FBF6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D31A37A620A766AD000FBF6A /* Assets.xcassets */; };
 		D31A37AA20A766AD000FBF6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31A37A820A766AD000FBF6A /* LaunchScreen.storyboard */; };
+		D31A37B420A76783000FBF6A /* TYProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31A37B320A76783000FBF6A /* TYProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		D31A37A620A766AD000FBF6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D31A37A920A766AD000FBF6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D31A37AB20A766AD000FBF6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D31A37B120A76705000FBF6A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D31A37B220A76705000FBF6A /* ScreenShot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ScreenShot; sourceTree = "<group>"; };
+		D31A37B320A76783000FBF6A /* TYProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,8 @@
 		D31A379320A766AD000FBF6A = {
 			isa = PBXGroup;
 			children = (
+				D31A37B120A76705000FBF6A /* README.md */,
+				D31A37B220A76705000FBF6A /* ScreenShot */,
 				D31A379E20A766AD000FBF6A /* TYProgressBar */,
 				D31A379D20A766AD000FBF6A /* Products */,
 			);
@@ -56,6 +62,7 @@
 			children = (
 				D31A379F20A766AD000FBF6A /* AppDelegate.swift */,
 				D31A37A120A766AD000FBF6A /* ViewController.swift */,
+				D31A37B320A76783000FBF6A /* TYProgressBar.swift */,
 				D31A37A320A766AD000FBF6A /* Main.storyboard */,
 				D31A37A620A766AD000FBF6A /* Assets.xcassets */,
 				D31A37A820A766AD000FBF6A /* LaunchScreen.storyboard */,
@@ -138,6 +145,7 @@
 			files = (
 				D31A37A220A766AD000FBF6A /* ViewController.swift in Sources */,
 				D31A37A020A766AD000FBF6A /* AppDelegate.swift in Sources */,
+				D31A37B420A76783000FBF6A /* TYProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +285,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FWQ7N3RX7G;
 				INFOPLIST_FILE = TYProgressBar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YashThaker.TYProgressBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +301,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FWQ7N3RX7G;
 				INFOPLIST_FILE = TYProgressBar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YashThaker.TYProgressBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";

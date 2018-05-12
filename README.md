@@ -16,10 +16,17 @@ func setupProgressBar() {
         self.view.addSubview(progressBar)
     }
 ```
+Customize 
+---------
+You can change gradient color and label font and text color 
+```swift
+progressBar.gradients = [UIColor.red, UIColor.yellow]
+progressBar.textColor = .orange
+progressBar.font = UIFont(name: "HelveticaNeue-Medium", size: 22)!
+```
 
 Show progress 
 ---------
 ```swift
-  progressBar.progress = 0.5    // between 0 to 1
-  
+progressBar.progress = 0.5    // between 0 to 1
 ```

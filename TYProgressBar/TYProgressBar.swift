@@ -18,6 +18,14 @@ class TYProgressBar: UIView {
         }
     }
     
+    /* First number is for line width and second number for dash gap */
+    var lineDashPattern: [NSNumber] = [4, 2] {
+        didSet {
+            trackLayer.lineDashPattern = lineDashPattern
+            shapeLayer.lineDashPattern = lineDashPattern
+        }
+    }
+    
     var textColor: UIColor = UIColor.white {
         didSet {
             progressLbl.textColor = textColor
@@ -154,7 +162,7 @@ class TYProgressBar: UIView {
         layer.lineWidth = 10
         layer.strokeColor = strokeColor.cgColor
         layer.fillColor = fillColor.cgColor
-        layer.lineDashPattern = [4, 2]
+        layer.lineDashPattern = lineDashPattern
         return layer
     }
     

@@ -23,6 +23,9 @@ You can change gradient color and label font and text color
 progressBar.gradients = [UIColor.red, UIColor.yellow]
 progressBar.textColor = .orange
 progressBar.font = UIFont(name: "HelveticaNeue-Medium", size: 22)!
+
+/* First number is for line width and second number for dash gap */
+progressBar.lineDashPattern = [10, 4]
 ```
 
 Show progress 

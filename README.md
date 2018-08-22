@@ -2,7 +2,6 @@
 
 Custom animating gradient progress bar. <br />
 
-
 ![gif](ScreenShot/TYProgressBar.gif)
 
 How to use 
@@ -32,3 +31,5 @@ Show progress
 ```swift
 progressBar.progress = 0.5    // between 0 to 1
 ```
+
+![ss1](ScreenShot/ss1.png) ![ss2](ScreenShot/ss2.png) ![ss3](ScreenShot/ss3.png)

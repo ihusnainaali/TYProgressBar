@@ -27,10 +27,11 @@ class ViewController: UIViewController {
     
     func setupProgressBar() {
         progressBar.frame = CGRect(x: 0, y: 0, width: 220, height: 220)
-        progressBar.center = self.view.center
+        progressBar.center = view.center
         progressBar.gradients = [#colorLiteral(red: 0, green: 0.6588235294, blue: 0.7725490196, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 0.4941176471, alpha: 1)]
-        progressBar.lineDashPattern = [10, 4]
+        progressBar.lineDashPattern = [4, 2]
         progressBar.textColor = .white
+        progressBar.lineHeight = 10
         self.view.addSubview(progressBar)
     }
     

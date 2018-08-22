@@ -1,6 +1,5 @@
 //
-//  TYProgressBar.swift
-//  
+//  TYProgressBar.swift 
 //
 //  Created by Yash Thaker on 08/05/18.
 //  Copyright © 2018 Yash Thaker. All rights reserved.
@@ -18,8 +17,14 @@ class TYProgressBar: UIView {
         }
     }
     
-    /* First number is for line width and second number for dash gap */
-    var lineDashPattern: [NSNumber] = [4, 2] {
+    var lineHeight: CGFloat = 10 {
+        didSet {
+            trackLayer.lineWidth = lineHeight
+            shapeLayer.lineWidth = lineHeight
+        }
+    }
+    
+    var lineDashPattern: [NSNumber] = [1, 0] {  // lineWidth, lineGap
         didSet {
             trackLayer.lineDashPattern = lineDashPattern
             shapeLayer.lineDashPattern = lineDashPattern
@@ -40,19 +45,19 @@ class TYProgressBar: UIView {
     
     var progress: Double = 0 {
         didSet {
-            updateDraw()
+            updateProgress()
         }
     }
     
-    var pulsingGradientLayer: CAGradientLayer!  // Masking layer
-    var pulsingLayer: CAShapeLayer!
+    private var pulsingGradientLayer: CAGradientLayer!  // Masking layer
+    private var pulsingLayer: CAShapeLayer!
     
-    var trackLayer: CAShapeLayer!
+    private var trackLayer: CAShapeLayer!
     
-    var shapeGradientLayer: CAGradientLayer!    // masking layer
-    var shapeLayer: CAShapeLayer!
+    private var shapeGradientLayer: CAGradientLayer!    // masking layer
+    private var shapeLayer: CAShapeLayer!
     
-    lazy var progressLbl: UILabel = {
+    private lazy var progressLbl: UILabel = {
         let lbl = UILabel()
         lbl.textColor = textColor
         lbl.font = font
@@ -94,12 +99,15 @@ class TYProgressBar: UIView {
         
         pulsingGradientLayer.frame = self.bounds
         shapeGradientLayer.frame = self.bounds
+        progressLbl.frame = self.bounds
         
         let cx = self.bounds.width / 2
         let cy = self.bounds.height / 2
         let viewCenter = CGPoint(x: cx, y: cy)
         
-        let path = UIBezierPath(arcCenter: .zero, radius: cx - 22, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
+        let radius = min(cx, cy) - (lineHeight * 2)
+        
+        let path = UIBezierPath(arcCenter: .zero, radius: radius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
 
         pulsingLayer.path = path.cgPath
         trackLayer.path = path.cgPath
@@ -111,12 +119,9 @@ class TYProgressBar: UIView {
         
         trackLayer.transform = CATransform3DMakeRotation(-.pi/2, 0, 0, 1)
         shapeLayer.transform = CATransform3DMakeRotation(-.pi/2, 0, 0, 1)
-        
-        progressLbl.frame = CGRect(x: 0, y: 0, width: 100, height: 25)
-        progressLbl.center = viewCenter
     }
     
-    func updateDraw() {
+    private func updateProgress() {
         shapeLayer.strokeEnd = CGFloat(progress)
         
         let intProgress = Int(progress*100)
@@ -131,7 +136,7 @@ class TYProgressBar: UIView {
             stopPulseAnimation()
         }
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             self.progressLbl.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
 
         }) { (_) in
@@ -139,11 +144,12 @@ class TYProgressBar: UIView {
         }
     }
     
-    func startPulseAnimation() {
-        pulsingLayer.lineWidth = 15
+    private func startPulseAnimation() {
+        pulsingLayer.lineWidth = lineHeight
         
+        let scaleXY = 1 + (lineHeight/100)
         let animation =  CABasicAnimation(keyPath: "transform.scale.xy")
-        animation.toValue = 1.1
+        animation.toValue = scaleXY
         animation.duration = 0.8
         animation.repeatCount = Float.infinity
         animation.autoreverses = true
@@ -152,14 +158,14 @@ class TYProgressBar: UIView {
         pulsingLayer.add(animation, forKey: "TYPulsing")
     }
     
-    func stopPulseAnimation() {
+    private func stopPulseAnimation() {
         pulsingLayer.lineWidth = 0
         pulsingLayer.removeAnimation(forKey: "TYPulsing")
     }
     
     private func createShapeLayer(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let layer = CAShapeLayer()
-        layer.lineWidth = 10
+        layer.lineWidth = lineHeight
         layer.strokeColor = strokeColor.cgColor
         layer.fillColor = fillColor.cgColor
         layer.lineDashPattern = lineDashPattern
